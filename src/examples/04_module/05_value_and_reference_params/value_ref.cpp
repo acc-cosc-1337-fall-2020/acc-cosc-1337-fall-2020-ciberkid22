@@ -11,7 +11,18 @@ The function assigns 20 to num1 and 50 to num2
 @return does not return a value
 */
 
+int get_area(int num1, int num2)
+{
+    int area = num1 * num2;
+    
+    return area;
+}
 
+int pass_by_val_and_ref(int num1, int& num2)
+{
+    num1 = 20;
+    num2 = 50;
+}
 
 /*
 Function pass_by_const_ref 
@@ -21,3 +32,9 @@ Try to assign a value to num1, generates error.
 
 @return does not return a value
 */
+void pass_by_const_ref(const int& num3)
+{
+    //num3 = 100000;
+}
+
+
