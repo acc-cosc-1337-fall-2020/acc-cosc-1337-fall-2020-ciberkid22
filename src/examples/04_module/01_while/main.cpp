@@ -9,6 +9,12 @@ int main()
 
 	while (choice == 'y' || choice == 'Y') 
 	{
+		int value;
+		cout<< "Enter a number: ";
+		cin>>value;
+
+		int result = sum_of_squares(value);
+		cout<<"Result is: "<<result<<"\n";
 
 		cout<<"Enter y again to continue, any other character to exit. ";
 		cin>>choice;
