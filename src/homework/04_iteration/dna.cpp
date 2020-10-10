@@ -10,19 +10,20 @@ Calculate GC content:
 Iterate string count Gs and Cs, divide count by string length.
 Return quotient.
 */
-double get_gc_string(const string& dna)
+double get_gc_content(const string& dna)
 {
     double count = 0; //number of times g or c appears
     int length = dna.length(); //length of string
 
     for(int i = 0; i <= length; i++)
     {
-        if(dna[i] == 'G' || dna[i] == 'C' || dna[i] == 'c' || dna[i] == 'c') //non case sensitive loop
+        if(dna[i] == 'G' || dna[i] == 'C' || dna[i] == 'g' || dna[i] == 'c') //non case sensitive loop
         {
             count++;
         }
     } 
     double total = count/length;
+    return total;
 }
 
 
@@ -36,9 +37,9 @@ string get_reverse_string(string dna)
 {
     string reverse_DNA = "";
     int length = dna.length();
-    for(int i = length; i >= 0; i--)
+    for(int i = length-1; i >= 0; i--)
     {
-        reverse_DNA.push_back(dna[i]);
+        reverse_DNA.push_back(dna[i]); 
     }
     return reverse_DNA;
 }
@@ -60,7 +61,7 @@ string get_dna_complement(string dna)
     int length = revDNA.length();
     for(int i = 0; i <= length; i++)
     {
-        switch(revDNA[i])
+        switch(revDNA[i]) //switch a to t, g to c, and vice versa
         {
             case 'A':
                 revDNA[i] = 'T';
@@ -88,4 +89,5 @@ string get_dna_complement(string dna)
                 break;
         }
     }
+    return revDNA;
 }
