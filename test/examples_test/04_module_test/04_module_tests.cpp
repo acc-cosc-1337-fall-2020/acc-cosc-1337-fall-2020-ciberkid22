@@ -14,7 +14,7 @@ TEST_CASE("Test sum of squares fucntion")
 	REQUIRE(sum_of_squares(5) == 55);
 }
 
-TEST_CASE("Test sum of squares fucntion 2")
+TEST_CASE("Test sum of squares function 2")
 {
 	REQUIRE(sum_of_squares_2(3) == 14);
 	REQUIRE(sum_of_squares_2(4) == 30);
