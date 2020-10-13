@@ -1,8 +1,15 @@
 #include "for_ranged.h"
 #include<iostream>
 #include<vector>
+#include<string>
 
 using std::vector;
+using std::string;
+
+void loop_string_w_index(std::string str)
+{
+    //for(std)
+}
 
 /*
 Function loop_vector_w_index 
