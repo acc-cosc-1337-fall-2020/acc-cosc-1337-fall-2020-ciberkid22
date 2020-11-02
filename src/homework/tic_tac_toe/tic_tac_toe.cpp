@@ -8,7 +8,38 @@ using std::string; using std::vector;
 
 bool TicTacToe::game_over()
 {
-    return check_board_full();
+    if(check_column_win() == true || check_row_win() == true || check_diagnal_win() == true)
+    {
+        set_winner();
+        return true;
+    }
+    else if(check_board_full() == true)
+    {
+        winner = "C";
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+void TicTacToe::set_winner()
+{
+    if(player == "X")
+    {
+        winner = "O";
+    }
+    else if (player == "x")
+    {
+        winner = "o";
+    }
+    else
+    {
+        winner = "X";
+    }
+    
 }
 
 void TicTacToe::start_game(string first_player)
@@ -59,6 +90,48 @@ bool TicTacToe::check_board_full()
         check = true;
     }
     return check;
+}
+
+bool TicTacToe::check_column_win()
+{
+    if(
+        (point[0] == point[3] && point[3] == point[6]) && point[0] != " " ||
+        (point[1] == point[4] && point[4] == point[7]) && point[1] != " " ||
+        (point[2] == point[5] && point[5] == point[8]) && point[2] != " "
+    )
+        return true;
+    else
+    {
+        return false;
+    }
+    
+}
+
+bool TicTacToe::check_row_win()
+{
+    if(
+        (point[0] == point[1] && point[1] == point[2]) && point[0] != " " ||
+        (point[3] == point[4] && point[4] == point[5]) && point[3] != " " ||
+        (point[6] == point[7] && point[7] == point[8]) && point[6] != " "
+    )
+        return true;
+    else
+    {
+        return false;
+    }
+}
+
+bool TicTacToe::check_diagnal_win()
+{
+    if(
+        (point[0] == point[4] && point[4] == point[8]) && point[0] != " " ||
+        (point[6] == point[4] && point[4] == point[2]) && point[6] != " "
+    )
+        return true;
+    else
+    {
+        return false;
+    }
 }
 
 void TicTacToe::clear_board()
