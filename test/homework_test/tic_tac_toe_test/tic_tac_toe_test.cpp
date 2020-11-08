@@ -57,6 +57,7 @@ TEST_CASE("Test win by first column")
 	game.mark_board(3);
 	game.mark_board(7);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
 
 TEST_CASE("Test win by second column")
@@ -69,6 +70,7 @@ TEST_CASE("Test win by second column")
 	game.mark_board(3);
 	game.mark_board(8);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
 
 TEST_CASE("Test win by third column")
@@ -81,6 +83,7 @@ TEST_CASE("Test win by third column")
 	game.mark_board(4);
 	game.mark_board(9);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
 
 TEST_CASE("Test win by first row")
@@ -93,6 +96,7 @@ TEST_CASE("Test win by first row")
 	game.mark_board(5);
 	game.mark_board(3);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
 
 TEST_CASE("Test win by second row")
@@ -105,6 +109,7 @@ TEST_CASE("Test win by second row")
 	game.mark_board(8);
 	game.mark_board(6);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
 
 TEST_CASE("Test win by third row")
@@ -117,6 +122,7 @@ TEST_CASE("Test win by third row")
 	game.mark_board(2);
 	game.mark_board(9);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
 
 TEST_CASE("Test win by diagnal top left")
@@ -129,6 +135,7 @@ TEST_CASE("Test win by diagnal top left")
 	game.mark_board(3);
 	game.mark_board(9);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
 
 TEST_CASE("Test win by diagnal top right")
@@ -141,4 +148,5 @@ TEST_CASE("Test win by diagnal top right")
 	game.mark_board(2);
 	game.mark_board(3);
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "X");
 }
