@@ -4,18 +4,19 @@
 #include <string>
 #include "tic_tac_toe.h"
 
-using std::string; using std::vector;
+using std::string; using std::vector; using std::cout; using std::cin;
 
 bool TicTacToe::game_over()
 {
+
+    if(check_board_full() == true)
+    {
+        winner == "C";
+        return true;
+    }
     if(check_column_win() == true || check_row_win() == true || check_diagnal_win() == true)
     {
         set_winner();
-        return true;
-    }
-    else if(check_board_full() == true)
-    {
-        winner = "C";
         return true;
     }
     else
@@ -35,12 +36,19 @@ void TicTacToe::set_winner()
     {
         winner = "o";
     }
-    else
+    else if (player == "O")
     {
         winner = "X";
     }
+    else if (player == "o")
+    {
+        winner == "x";
+    }
+    
     
 }
+
+
 
 void TicTacToe::start_game(string first_player)
 {
@@ -51,14 +59,12 @@ void TicTacToe::start_game(string first_player)
 void TicTacToe::mark_board(int position)
 {
     point[position - 1] = player;
-    set_next_player();
-}
 
-void TicTacToe::display_board() const
-{
-    std::cout<<point[0]<<"|"<<point[1]<<"|"<<point[2]<<"\n";
-    std::cout<<point[3]<<"|"<<point[4]<<"|"<<point[5]<<"\n";
-    std::cout<<point[6]<<"|"<<point[7]<<"|"<<point[8]<<"\n";
+    set_next_player();
+    if(game_over() == false)
+    {
+     set_next_player();
+    }
 }
 
 void TicTacToe::set_next_player()
@@ -140,4 +146,25 @@ void TicTacToe::clear_board()
     {
         point[i] = " ";
     }
+}
+
+std::istream& operator>>(std::istream& in, TicTacToe game)
+{
+    int position;
+    cout<<"Enter a number from 1 to 9 to select your position: ";
+	cin>>position;
+
+	game.mark_board(position);
+    cout<<game;
+
+    return in;
+}
+
+std::ostream& operator<<(std::ostream& out, TicTacToe game)
+{
+    cout<<game.point[0]<<"|"<<game.point[1]<<"|"<<game.point[2]<<"\n";
+    cout<<game.point[4]<<"|"<<game.point[5]<<"|"<<game.point[6]<<"\n";
+    cout<<game.point[7]<<"|"<<game.point[8]<<"|"<<game.point[9]<<"\n";
+
+    return out;
 }
