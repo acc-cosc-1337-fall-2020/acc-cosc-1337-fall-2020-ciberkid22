@@ -1,32 +1,43 @@
 #include "tic_tac_toe_3.h"
 
-/*
-class function check_column_win
-Win by column if and return true if
-0,3, and 6 are equal
-1, 4, and 7
-2, 5, and 8
-else
-false
-*/
+bool TicTacToe::check_column_win()
+{
+    if(
+        (point[0] == point[3] && point[3] == point[6]) && point[0] != " " ||
+        (point[1] == point[4] && point[4] == point[7]) && point[1] != " " ||
+        (point[2] == point[5] && point[5] == point[8]) && point[2] != " "
+    )
+        return true;
+    else
+    {
+        return false;
+    }
+    
+}
 
+bool TicTacToe::check_row_win()
+{
+    if(
+        (point[0] == point[1] && point[1] == point[2]) && point[0] != " " ||
+        (point[3] == point[4] && point[4] == point[5]) && point[3] != " " ||
+        (point[6] == point[7] && point[7] == point[8]) && point[6] != " "
+    )
+        return true;
+    else
+    {
+        return false;
+    }
+}
 
-
-/*
-class function check_row_win
-Win by row if
-0, 1, 2 are equal
-3,4,5 are equal
-6,7,8 are equal
-*/
-
-
-
-/*
-class function check_diagonal_win
-Win diagonally
-0 1 2
-3 4 5
-6 7 8
-
-*/
+bool TicTacToe::check_diagnal_win()
+{
+    if(
+        (point[0] == point[4] && point[4] == point[8]) && point[0] != " " ||
+        (point[6] == point[4] && point[4] == point[2]) && point[6] != " "
+    )
+        return true;
+    else
+    {
+        return false;
+    }
+}
