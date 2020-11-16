@@ -3,15 +3,16 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 
 using std::string; using std::ostream; using std::cout; using std::cin; 
 
 //public functions
-void TicTacToeManager::save_game(TicTacToe game)
+void TicTacToeManager::save_game(std::unique_ptr<TicTacToe>& game)
 {
-    games.push_back(game);
-
-    update_winner_count(game.get_winner());
+    update_winner_count(game->get_winner());
+    games.push_back(std::move(game));
+    
 }
 
 void TicTacToeManager::get_winner_total(int& o, int& w, int& t)
@@ -28,12 +29,9 @@ void TicTacToeManager::get_winner_total(int& o, int& w, int& t)
 
 ostream& operator << (ostream& out, const TicTacToeManager& manager)
 {
-    for(int i = 0; i < manager.games.size(); i++)
-    {
-        cout << "Game "<<i<< " winner:\n";
-        cout << manager.games[i];
-        cout << "\n";
-    }
+    std::cout<<"\n";
+    std::cout<<"Games X won: " << manager.x_win << "/nGames O won: " << manager.o_win << "/nGames tied: " << manager.ties;
+\
     return out;
 }
 
