@@ -16,6 +16,8 @@ class TicTacToe
         string get_winner(){return winner;};
         friend std::istream& operator>>(std::istream& in, TicTacToe game);
         friend std::ostream& operator<<(std::ostream& out, const TicTacToe game);
+        TicTacToe(vector<string> p, string win): points(p), winner(win){};
+        vector<string> get_points()const{return points;}
 
     private:
         void set_next_player(); //set player X or O
@@ -25,13 +27,13 @@ class TicTacToe
         string player;
         string next_player;
         string winner;
-        vector<string> point{9, " "};
 
     protected:
         vector<string> points;
         virtual bool check_column_win();
         virtual bool check_row_win();
         virtual bool check_diagnal_win();
+        vector<string> point{9, " "};
 
 };
 #endif
