@@ -1,6 +1,6 @@
 #include "tic_tac_toe_4.h"
 
-bool TicTacToe::check_column_win()
+bool TicTacToe4::check_column_win()
 {
     if(
         (point[0] == point[4] && point[4] == point[8] && point[8] == point[12]) && point[0] != " " ||
@@ -16,7 +16,7 @@ bool TicTacToe::check_column_win()
     
 }
 
-bool TicTacToe::check_row_win()
+bool TicTacToe4::check_row_win()
 {
     if(
         (point[0] == point[1] && point[1] == point[2] && point[2] == point[3]) && point[0] != " " ||
@@ -31,7 +31,7 @@ bool TicTacToe::check_row_win()
     }
 }
 
-bool TicTacToe::check_diagnal_win()
+bool TicTacToe4::check_diagnal_win()
 {
     if(
         (point[0] == point[5] && point[5] == point[10] && point[10] == point[15]) && point[0] != " " ||

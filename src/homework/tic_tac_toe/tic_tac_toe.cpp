@@ -14,7 +14,7 @@ bool TicTacToe::game_over()
         winner == "C";
         return true;
     }
-    if(check_column_win() == true || check_row_win() == true || check_diagnal_win() == true)
+    else if(check_column_win() == true || check_row_win() == true || check_diagnal_win() == true)
     {
         set_winner();
         return true;
@@ -123,7 +123,6 @@ std::istream& operator>>(std::istream& in, TicTacToe game)
 	cin>>position;
 
 	game.mark_board(position);
-    cout<<game;
 
     return in;
 }

@@ -1,5 +1,6 @@
 //cpp
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_data.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -34,6 +35,17 @@ ostream& operator << (ostream& out, const TicTacToeManager& manager)
 \
     return out;
 }
+
+TicTacToeManager::TicTacToeManager(TicTacToeData &data)
+{
+    games = data.get_games();
+    for(auto& game : games)
+    {
+        update_winner_count(game->get_winner());
+    }
+}
+
+TicTacToeManager::~TicTacToeManager(){data.save_games(games);}
 
 //private function
 void TicTacToeManager::update_winner_count(string winner)

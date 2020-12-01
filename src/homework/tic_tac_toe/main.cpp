@@ -5,25 +5,27 @@
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_data.h"
 using std::string; using std::cout; using std::cin; using std::unique_ptr;
 
 int main() 
 {
 	char choice;
-	unique_ptr<TicTacToe> game;
-	TicTacToeManager manager;
+	TicTacToeData dataman;
+	TicTacToeManager manager(dataman);
 	string player1;
 	string winner;
 
 	do{
+		unique_ptr<TicTacToe> game;
 		int size = 0;
-		cout<<"Welcome to Tic-Tac-Toe!--> ";
-		while(size != 3 || size != 4)
+		cout<<"Welcome to Tic-Tac-Toe!\n";
+		do
 		{
-			cout<<"If you would like to play in a 3x3 board, type 3";
-			cout<<"Or if you would like to play in a 4x4 board, type 4";
+			cout<<"If you would like to play in a 3x3 board, type 3. ";
+			cout<<"Or if you would like to play in a 4x4 board, type 4. -> ";
 			cin>>size;
-		}
+		} while (size != 3 && size != 4);
 
 		if(size == 3)
 		{
@@ -36,18 +38,19 @@ int main()
 
 		do
 		{
-			cout<<"Player 1, enter 'x' to choose x, or enter 'o' to choose o";
+			cout<<"Player 1, enter 'x' to choose x, or enter 'o' to choose o -> ";
+			cin>>player1;
 
-		}while(player1 != "X" || player1 != "x" || player1 != "O" || player1 != "o");
+		}while(player1 != "X" && player1 != "x" && player1 != "O" && player1 != "o");
 
 		game->start_game(player1);
 
-		
-		while(game->game_over() == false)
+
+		do
 		{
 			cin>>*game;
 			cout<<*game;
-		}
+		}while(game->game_over() == false);
 		winner = game->get_winner();
 		cout<<"Game! The winner is: "<<winner<<"!\n";
 		manager.save_game(game);
